@@ -1,7 +1,12 @@
+//Po załadowania się okna przeglądarki odpalam funkcję:
 window.onload=function(){
+    //Przypisuje id mojego canvasa na canv
     canv=document.getElementById("gc");
+    //okreslasz obiekt na grę 2d (  console.log(ctx)  )
     ctx=canv.getContext("2d");
+    //Przeglądarka nasłuchuje kliknięcia guzika i wtedy odpala funkcję keyPush()
     document.addEventListener("keydown", keyPush);
+    //Co 0,0(6)sekundy jest odpalana funkcja game()
     setInterval(game, 1000/15);
 }
 px=py=10;
@@ -11,7 +16,9 @@ xv=yv=0;
 trail=[];
 tail=5;
 function game(){
+    //px = px + xv;
     px+=xv;
+    //py = py + yv;
     py+=yv;
     if(px<0){
         px= tc-1;
@@ -19,10 +26,10 @@ function game(){
     if(px>tc-1){
         px= 0;
     }
-    if(px<0){
+    if(py<0){
         py= tc-1;
     }
-    if(px>tc-1){
+    if(py>tc-1){
         py= 0;
     }
     ctx.fillStyle="black";
