@@ -9,27 +9,40 @@ window.onload=function(){
     //Co 0,0(6)sekundy jest odpalana funkcja game()
     setInterval(game, 1000/15);
 }
+//Początkowe ustawienie węża
 px=py=10;
+//Jednostka odstępów
 gs=tc=20;
 ax=ay=15;
+//Wartosci zmiennych kontrolowane przez strzałki
 xv=yv=0;
 trail=[];
 tail=5;
 function game(){
-    //???px = px + xv;
+    //px = px + xv;
+    //Pozycja węża + nowy ruch
     px+=xv;
-    //???py = py + yv;
+    //py = py + yv;
+    //Pozycja węża + nowy ruch
     py+=yv;
+    //Jeżeli pozycja px jest mniejsza od 0
     if(px<0){
+        //To przeskocz na drugą stronę osi X
         px= tc-1;
     }
+    //Jeżeli pozycja px jest większa od 19
     if(px>tc-1){
+        //To przeskocz na drugą stronę osi X
         px= 0;
     }
+    //Jeżeli pozycja py jest większa od 0
     if(py<0){
+        //To przeskocz na drugą stronę osi Y
         py= tc-1;
     }
+    //Jeżeli pozycja py jest większa od 19
     if(py>tc-1){
+        //To przeskocz na drugą stronę osi Y
         py= 0;
     }
     //zmiana koloru na czarny
@@ -39,27 +52,33 @@ function game(){
     //zmiana koloru na zielony
     ctx.fillStyle="lime";
     //pętla która wykonujue się zależnie od długośći tablicy trail
+    // początkowo fałsz i<0
     for(var i=0; i<trail.length; i++){
         //rysuje kwadrat 
-        //tworzy w obiekcie pole x i y dla kazdego z obiegów
-        //???ustawia kwadrat w osi X i Y 
+        //tworzy w obiekcie pole x i y dla kazdego z obiektów
+        //ustawia kwadrat w osi X i Y 
+        // 
         //tworzy kwadrat o szerokosci gs-2 i wysokosci gs-2 czyli po 18px;
         ctx.fillRect(trail[i].x*gs, trail[i].y*gs, gs-2, gs-2);
 
-        // Jesli wartosc dla kazdego z pola x jest równa 10 i wartosc kazdego pola y jest równa też 10, zmienna tail = 5;
+        //???
+        //prawda
         if(trail[i].x==px && trail[i].y==py){
             tail = 5;
         }
     }
-    //??? Wrzuca do tablicy wartość x=px i y=py
+    //Wrzuca do tablicy wartość x=px i y=py
+    // czyli wartosci początkowe
     trail.push({x:px,y:py});
     //??? pętla wykonuje sie wtedy gdy długość tablicy jest większa od wartosci zmiennej tail
+    //początkowo fałsz
+    // 4<5
     while(trail.length>tail){
         //??? usuwa pierwszy element tablicy
         trail.shift();
     }
 
-    //sprawdza czy ax i ay (liczby losowe) znajdują sie na tej samej pozycji co wartosci zmiennych px ipy
+    //sprawdza czy ax i ay (liczby losowe) znajdują sie na tej samej pozycji co wartosci zmiennych px i py
     if(ax==px && ay==py){
         //odaje 1 do wartosci zmiennej tail
         tail++;

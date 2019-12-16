@@ -1,0 +1,8 @@
+body{
+    background-color: #666;
+}
+#box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
